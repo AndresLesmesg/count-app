@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+}
+div, p {
+    margin: 0px;
+}
+div, form {
+    width:100%;
+}
+
+ul, li, form {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.count-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: azure;
+    padding: 10px ;
+    margin-top: 5px;
+}
+
+.count-control {
+    display: flex;
+    margin-bottom: 5px;
+    font-size: 120%;
+}
+.bg-secondary {
+    color: white;
+}
+.bg-light {
+    color: #343a40;
+}
+
+@media only screen and (max-width: 460px){
+    .count-item {
+        flex-direction:column;
+    }
+    .count-control form {
+        display: inline;
+       justify-content: center;
+    } 
+    .bg-secondary {
+        background-color:#343a40 !important;
+        color: #fff;
+    }
+}

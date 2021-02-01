@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Count
+{% endblock  %}
+{% block content %}
+
+<h2 class="display-4 align-text-center">Count List</h2>
+
+
+<div class="container-fluid">
+    <ul class="list-group">
+    {% for item in context %}
+            <li class="list-item">
+                <div class="container">
+                    <div class="row d-flex justify-content-center">
+                        <div class="d-flex count-item col-md-9 col-sm-10 rounded {% if (item[0] % 2) == 0 %}bg-secondary{% else %}bg-light{% endif %}">
+                            <p class="tilte-count">{{ item[1].title }}</p>
+                            <h4>
+                                <span class="badge {% if (item[0] % 2) != 0 %}bg-secondary{% else %}bg-light{% endif %} rounded-pill">{{ item[1].value }}</span>
+                            </h4>
+                        </div>
+                        <div class="d-flex count-control col-md-3 col-sm-2">
+                            <form action="/count" method="post">
+                                <div class="btns">
+                                    <input type="hidden" name="index" value="{{item[0]}}">
+                                    <button type="submit" class="btn btn-danger btn-lg btn-block" name="value" value="{{ item[1].value - 1 }}">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="submit" class="btn btn-info btn-lg btn-block" name="value" value="{{ item[1].value + 1 }}">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <ul>
+        <li>
+            <div class="container count-control">
+                <form action="/count" method="post" >
+                    <div class="row d-flex justify-content-center">
+                        <div class="d-flex count-item col-md-9 col-sm-10">
+                            <input type="text" class="form-control" name="item">
+                        </div>
+                        <div class="d-flex count-control col-md-3 col-sm-2">
+                            <button type="submit" class="btn btn-success btn-lg btn-block" name="new_item_status" value="False">
+                                <i class="fa fa-plus"> add</i>
+                            </button>
+                        </div>    
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+{% endblock  %}
